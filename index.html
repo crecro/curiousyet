@@ -7,98 +7,128 @@
     <meta name="description" content="curiousyet — sometimes a great story starts with curiosity and an unnecessarily elaborate website.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ── Floating bubbles ── -->
-    <div class="bubbles" aria-hidden="true">
-        <span class="orb orb-1"></span>
-        <span class="orb orb-2"></span>
-        <span class="orb orb-3"></span>
-        <span class="orb orb-4"></span>
-        <span class="orb orb-5"></span>
-        <span class="orb orb-6"></span>
-        <span class="orb orb-7"></span>
+    <!-- ── Floating dust particles ── -->
+    <div class="particles" aria-hidden="true">
+        <span class="mote m1"></span>
+        <span class="mote m2"></span>
+        <span class="mote m3"></span>
+        <span class="mote m4"></span>
+        <span class="mote m5"></span>
+        <span class="mote m6"></span>
+        <span class="mote m7"></span>
+        <span class="mote m8"></span>
+        <span class="mote m9"></span>
+        <span class="mote m10"></span>
     </div>
 
     <!-- ═══════════ PAGE 1 : HERO ═══════════ -->
     <section id="hero" class="page hero">
         <div class="hero-content">
-            <p class="kicker">Hello there ✨</p>
+            <p class="kicker">— Hello there —</p>
             <h1>
                 Not every story begins with<br>
                 a grand introduction.
             </h1>
             <p class="subtitle">
-                Sometimes it begins with <strong>curiosity</strong>,<br>
-                a little <strong>courage</strong>,<br>
-                and an unnecessarily elaborate <strong>website</strong>.
+                Sometimes it begins with <em>curiosity</em>,<br>
+                a little <em>courage</em>,<br>
+                and an unnecessarily elaborate <em>website</em>.
             </p>
-            <button class="btn-glass" data-goto="poem">Take the Tour →</button>
+            <button class="btn-dark" data-goto="poem">Take the Tour →</button>
         </div>
 
         <!-- Hint bubble -->
-        <div class="hint-bubble" id="hint-bubble" role="button" tabindex="0" aria-label="Click to reveal a hint">
-            <span class="bubble-q">?</span>
+        <div class="hint-seal" id="hint-bubble" role="button" tabindex="0" aria-label="Click to reveal">
+            <span class="seal-mark">✦</span>
         </div>
-        <div class="hint-revealed" id="hint-revealed" hidden>From Rahul</div>
+        <div class="hint-revealed" id="hint-revealed" hidden>— From Rahul</div>
     </section>
 
     <!-- ═══════════ PAGE 2 : POEM ═══════════ -->
     <section id="poem" class="page poem-page">
         <div class="narrow">
-            <div class="glass-card reveal">
-                <span class="card-emoji">🌙</span>
-                <blockquote class="poem-text">
-                    <p>"You look as beautiful as pristine,</p>
-                    <p>like an absolute serene,</p>
-                    <p>oceanside moonlight beam on my face."</p>
-                </blockquote>
+            <div class="parchment-card reveal">
+                <div class="parchment-inner">
+                    <span class="parchment-ornament top">❦</span>
+                    <blockquote class="poem-text">
+                        <p>"You look as beautiful as pristine,</p>
+                        <p>like an absolute serene,</p>
+                        <p>oceanside moonlight beam on my face."</p>
+                    </blockquote>
+                    <span class="parchment-ornament bottom">❦</span>
+                </div>
             </div>
-            <button class="btn-glass reveal" data-goto="dejavu">Keep going →</button>
+            <button class="btn-dark reveal" data-goto="dejavu">Keep going →</button>
         </div>
     </section>
 
-    <!-- ═══════════ PAGE 3 : DÉJÀ VU ═══════════ -->
+    <!-- ═══════════ PAGE 3 : DÉJÀ VU — SCROLL ═══════════ -->
     <section id="dejavu" class="page dejavu-page">
         <div class="narrow">
-            <div class="glass-card dejavu-card reveal">
-                <span class="card-emoji">✦</span>
-                <h2 class="dejavu-title">Déjà vu.</h2>
-                <p class="dejavu-line">The first time I saw her, felt like déjà vu.</p>
-                <p class="dejavu-line">It was like my soul has always been known to her,</p>
-                <p class="dejavu-line last">mesmerising me.</p>
+            <div class="scroll-wrap reveal">
+                <!-- Top roll -->
+                <div class="scroll-roll scroll-top">
+                    <div class="roll-shadow"></div>
+                    <div class="roll-bar"></div>
+                    <div class="roll-end left"></div>
+                    <div class="roll-end right"></div>
+                </div>
+
+                <!-- Scroll body -->
+                <div class="scroll-body">
+                    <div class="scroll-content">
+                        <h2 class="scroll-title">Déjà vu.</h2>
+                        <p class="scroll-line">The first time I saw you, felt like déjà vu.</p>
+                        <p class="scroll-line mid">It was like my soul has always been known to you,</p>
+                        <p class="scroll-line last">mesmerising me.</p>
+                    </div>
+                </div>
+
+                <!-- Bottom roll -->
+                <div class="scroll-roll scroll-bottom">
+                    <div class="roll-shadow"></div>
+                    <div class="roll-bar"></div>
+                    <div class="roll-end left"></div>
+                    <div class="roll-end right"></div>
+                </div>
             </div>
-            <button class="btn-glass reveal" data-goto="connect">One more thing →</button>
+            <button class="btn-dark reveal" data-goto="connect">One more thing →</button>
         </div>
     </section>
 
     <!-- ═══════════ PAGE 4 : CONNECT ═══════════ -->
     <section id="connect" class="page connect-page">
         <div class="narrow">
-            <div id="the-form" class="glass-card form-card reveal">
-                <h2>We started with a website.</h2>
-                <p class="form-sub">Maybe the next step is a conversation.</p>
+            <div id="the-form" class="parchment-card form-card reveal">
+                <div class="parchment-inner">
+                    <h2>We started with a website.</h2>
+                    <p class="form-sub">Maybe the next step is a conversation.</p>
 
-                <form id="connect-form" autocomplete="off">
-                    <div class="field">
-                        <label for="visitor-contact">How can I reach you?</label>
-                        <input type="text" id="visitor-contact" name="contact" required>
-                    </div>
-                    <div class="field">
-                        <label for="visitor-message">Anything you'd like to say?</label>
-                        <textarea id="visitor-message" name="message" rows="3" placeholder="A word, a sentence, no pressure."></textarea>
-                    </div>
-                    <button type="submit" class="btn-glass btn-send">Send it over ✨</button>
-                </form>
+                    <form id="connect-form" autocomplete="off">
+                        <div class="field">
+                            <label for="visitor-contact">How can I reach you?</label>
+                            <input type="text" id="visitor-contact" name="contact" required>
+                        </div>
+                        <div class="field">
+                            <label for="visitor-message">Anything you'd like to say?</label>
+                            <textarea id="visitor-message" name="message" rows="3" placeholder="A word, a sentence, no pressure."></textarea>
+                        </div>
+                        <button type="submit" class="btn-dark btn-send">Send it over ✦</button>
+                    </form>
+                </div>
             </div>
 
-            <div id="the-done" class="glass-card done-card" hidden>
-                <span class="card-emoji">🎉</span>
-                <h2>Message received!</h2>
-                <p>Thanks for being part of this little experiment.<br>Talk soon, hopefully.</p>
+            <div id="the-done" class="parchment-card" hidden>
+                <div class="parchment-inner done-inner">
+                    <span class="done-ornament">✦</span>
+                    <h2>Message received.</h2>
+                    <p>Thanks for being part of this little experiment.<br>Talk soon, hopefully.</p>
+                </div>
             </div>
         </div>
     </section>

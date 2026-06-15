@@ -14,39 +14,39 @@
     reveals.forEach((el) => obs.observe(el));
 
     /* ── "Next" buttons — smooth scroll ────── */
-    document.querySelectorAll('.btn-glass[data-goto]').forEach((btn) => {
+    document.querySelectorAll('.btn-dark[data-goto]').forEach((btn) => {
         btn.addEventListener('click', () => {
             const target = document.getElementById(btn.dataset.goto);
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 
-    /* ── Hint bubble — pop to reveal ────────── */
-    const bubble   = document.getElementById('hint-bubble');
+    /* ── Wax seal — pop to reveal ─────────── */
+    const seal     = document.getElementById('hint-bubble');
     const revealed = document.getElementById('hint-revealed');
 
-    if (bubble && revealed) {
-        bubble.addEventListener('click', () => {
-            bubble.classList.add('popping');
+    if (seal && revealed) {
+        seal.addEventListener('click', () => {
+            seal.classList.add('popping');
             setTimeout(() => {
-                bubble.hidden   = true;
+                seal.hidden     = true;
                 revealed.hidden = false;
-            }, 300);
+            }, 350);
         });
     }
 
-    /* ── Déjà vu lines — staggered reveal ──── */
-    const dejavuCard = document.querySelector('.dejavu-card');
-    if (dejavuCard) {
-        const dvObs = new IntersectionObserver((entries) => {
+    /* ── Scroll lines — staggered reveal ──── */
+    const scrollWrap = document.querySelector('.scroll-wrap');
+    if (scrollWrap) {
+        const svObs = new IntersectionObserver((entries) => {
             entries.forEach((e) => {
                 if (e.isIntersecting) {
                     e.target.classList.add('visible');
-                    dvObs.unobserve(e.target);
+                    svObs.unobserve(e.target);
                 }
             });
         }, { threshold: 0.3 });
-        dvObs.observe(dejavuCard);
+        svObs.observe(scrollWrap);
     }
 
     /* ── Form submit ─────────────────────────── */
