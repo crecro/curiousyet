@@ -45,10 +45,11 @@
             
             // Generate 12-18 bouquets
             const bouquetCount = Math.floor(Math.random() * 7) + 12;
+            const flowers = ['🌹', '🌻', '🌷'];
             for (let i = 0; i < bouquetCount; i++) {
                 const bouquet = document.createElement('div');
                 bouquet.className = 'bouquet-particle';
-                bouquet.textContent = '💐';
+                bouquet.textContent = flowers[Math.floor(Math.random() * flowers.length)];
                 
                 const startX = Math.random() * window.innerWidth;
                 const startY = window.innerHeight + 20;
