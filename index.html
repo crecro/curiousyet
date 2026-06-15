@@ -108,30 +108,15 @@
     <section id="question" class="page question-page">
         <div class="narrow">
 
-            <!-- Phase 1: The Ask -->
-            <div id="the-ask" class="ask-box reveal">
-                <h2>So… curious yet?</h2>
-                <p>We started with a website.<br>Maybe the next step is a conversation.</p>
-                <div class="ask-buttons">
-                    <button id="btn-yes" class="btn-yes">Yes</button>
-                    <button id="btn-no" class="btn-no">No</button>
-                </div>
-                <p class="hint-text" id="no-hint"></p>
-            </div>
-
-            <!-- Phase 2: The Form (hidden until Yes) -->
-            <div id="the-form" class="form-box" hidden>
-                <h2>Glad you said yes.</h2>
-                <p class="form-desc">Leave a message or your preferred way to connect.</p>
+            <!-- The Form (visible directly) -->
+            <div id="the-form" class="form-box reveal">
+                <h2>We started with a website.</h2>
+                <p class="form-desc">Maybe the next step is a conversation.</p>
 
                 <form id="connect-form" autocomplete="off">
                     <div class="field">
-                        <label for="visitor-name">What should I call you?</label>
-                        <input type="text" id="visitor-name" name="name" placeholder="Your name" required>
-                    </div>
-                    <div class="field">
                         <label for="visitor-contact">How can I reach you?</label>
-                        <input type="text" id="visitor-contact" name="contact" placeholder="Phone, email, Instagram — anything" required>
+                        <input type="text" id="visitor-contact" name="contact" required>
                     </div>
                     <div class="field">
                         <label for="visitor-message">Anything you'd like to say?</label>
@@ -141,7 +126,7 @@
                 </form>
             </div>
 
-            <!-- Phase 3: Success -->
+            <!-- Success -->
             <div id="the-done" class="done-box" hidden>
                 <span class="done-emoji">🎉</span>
                 <h2>Message received!</h2>
