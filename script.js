@@ -34,7 +34,22 @@
             }, 350);
         });
     }
+    /* ──── Firebase Setup ── */
+    const firebaseConfig = {
+        apiKey: "AIzaSyC3H6OGf_5pZ_6qK2b9xL7mN-4pQ9-R8Yk",
+        authDomain: "curiousyet-7c771.firebaseapp.com",
+        projectId: "curiousyet-7c771",
+        databaseURL: "https://curiousyet-7c771-default-rtdb.firebaseio.com",
+        storageBucket: "curiousyet-7c771.appspot.com",
+        messagingSenderId: "1079651216",
+        appId: "1:1079651216:web:curiousyet-app"
+    };
 
+    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase?.database ? firebase.database() : null;
+    const messagesRef = db ? db.ref('messages') : null;
     /* ── Soft shimmer button — bouquet particles ─ */
     const shimmerToggle = document.getElementById('shimmer-toggle');
     let bouquetTimer = null;
@@ -103,46 +118,58 @@
     function renderMessages() {
         if (!messageBoard || !messageList) return;
 
-        const saved = JSON.parse(localStorage.getItem('curiousyet_messages') || '[]');
-        messageList.innerHTML = '';
-
-        if (!saved.length) {
-            const empty = document.createElement('div');
-            empty.className = 'message-empty';
-            empty.textContent = 'No messages yet. The first one will appear here.';
-            messageList.appendChild(empty);
-            return;
-        }
-
         const formatter = new Intl.DateTimeFormat(undefined, {
             dateStyle: 'medium',
             timeStyle: 'short'
         });
 
-        saved.slice().reverse().forEach((entry) => {
-            const card = document.createElement('article');
-            card.className = 'message-entry';
+        const displayMessages = (messages) => {
+            messageList.innerHTML = '';
+            if (!messages || messages.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'message-empty';
+                empty.textContent = 'No messages yet. The first one will appear here.';
+                messageList.appendChild(empty);
+                return;
+            }
 
-            const header = document.createElement('header');
+            messages.slice().reverse().forEach((entry) => {
+                const card = document.createElement('article');
+                card.className = 'message-entry';
 
-            const contact = document.createElement('div');
-            contact.className = 'message-contact';
-            contact.textContent = entry.contact || 'Anonymous';
+                const header = document.createElement('header');
 
-            const time = document.createElement('time');
-            time.className = 'message-time';
-            time.dateTime = entry.time;
-            time.textContent = entry.time ? formatter.format(new Date(entry.time)) : '';
+                const contact = document.createElement('div');
+                contact.className = 'message-contact';
+                contact.textContent = entry.contact || 'Anonymous';
 
-            header.append(contact, time);
+                const time = document.createElement('time');
+                time.className = 'message-time';
+                time.dateTime = entry.time;
+                time.textContent = entry.time ? formatter.format(new Date(entry.time)) : '';
 
-            const body = document.createElement('p');
-            body.className = 'message-body';
-            body.textContent = entry.message || 'No message left.';
+                header.append(contact, time);
 
-            card.append(header, body);
-            messageList.appendChild(card);
-        });
+                const body = document.createElement('p');
+                body.className = 'message-body';
+                body.textContent = entry.message || 'No message left.';
+
+                card.append(header, body);
+                messageList.appendChild(card);
+            });
+        };
+
+        // Try Firebase first, fall back to localStorage
+        if (messagesRef) {
+            messagesRef.on('value', (snapshot) => {
+                const fbData = snapshot.val();
+                const messages = fbData ? Object.values(fbData) : [];
+                displayMessages(messages);
+            });
+        } else {
+            const saved = JSON.parse(localStorage.getItem('curiousyet_messages') || '[]');
+            displayMessages(saved);
+        }
     }
 
     renderMessages();
@@ -164,9 +191,19 @@
         };
         if (!data.contact) return;
 
-        const saved = JSON.parse(localStorage.getItem('curiousyet_messages') || '[]');
-        saved.push(data);
-        localStorage.setItem('curiousyet_messages', JSON.stringify(saved));
+        // Save to Firebase if available, otherwise localStorage
+        if (messagesRef) {
+            messagesRef.push(data).catch(() => {
+                console.log('Firebase save failed, using localStorage');
+                const saved = JSON.parse(localStorage.getItem('curiousyet_messages') || '[]');
+                saved.push(data);
+                localStorage.setItem('curiousyet_messages', JSON.stringify(saved));
+            });
+        } else {
+            const saved = JSON.parse(localStorage.getItem('curiousyet_messages') || '[]');
+            saved.push(data);
+            localStorage.setItem('curiousyet_messages', JSON.stringify(saved));
+        }
 
         formBox.hidden = true;
         done.hidden    = false;
