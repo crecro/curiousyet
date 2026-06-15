@@ -40,6 +40,7 @@
                 and an unnecessarily elaborate <em>website</em>.
             </p>
             <button class="btn-dark" data-goto="poem">Take the Tour →</button>
+            <button class="btn-dark btn-ghost btn-wink" id="shimmer-toggle" type="button">Try a soft shimmer ✦</button>
         </div>
 
         <!-- Hint bubble -->
@@ -52,15 +53,19 @@
     <!-- ═══════════ PAGE 2 : POEM ═══════════ -->
     <section id="poem" class="page poem-page">
         <div class="narrow">
-            <div class="parchment-card reveal">
-                <div class="parchment-inner">
-                    <span class="parchment-ornament top">❦</span>
+            <div class="poem-frame reveal">
+                <span class="corner tl"></span>
+                <span class="corner tr"></span>
+                <span class="corner bl"></span>
+                <span class="corner br"></span>
+                <div class="poem-inner">
+                    <span class="poem-ornament">❦</span>
                     <blockquote class="poem-text">
                         <p>"You look as beautiful as pristine,</p>
                         <p>like an absolute serene,</p>
                         <p>oceanside moonlight beam on my face."</p>
                     </blockquote>
-                    <span class="parchment-ornament bottom">❦</span>
+                    <span class="poem-ornament">❦</span>
                 </div>
             </div>
             <button class="btn-dark reveal" data-goto="dejavu">Keep going →</button>
@@ -127,7 +132,15 @@
                 <div class="parchment-inner done-inner">
                     <span class="done-ornament">✦</span>
                     <h2>Message received.</h2>
-                    <p>Thanks for being part of this little experiment.<br>Talk soon, hopefully.</p>
+                    <p>Talk soon, hopefully.</p>
+                </div>
+            </div>
+
+            <div id="message-board" class="parchment-card message-board reveal">
+                <div class="parchment-inner">
+                    <p class="board-kicker">Saved messages</p>
+                    <h2>What she sent appears here.</h2>
+                    <div id="message-list" class="message-list" aria-live="polite"></div>
                 </div>
             </div>
         </div>
