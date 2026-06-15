@@ -28,6 +28,20 @@
         });
     });
 
+    /* ── Hint bubble — pop to reveal ────────── */
+    const bubble   = document.getElementById('hint-bubble');
+    const revealed = document.getElementById('hint-revealed');
+
+    if (bubble && revealed) {
+        bubble.addEventListener('click', () => {
+            bubble.classList.add('popping');
+            setTimeout(() => {
+                bubble.hidden    = true;
+                revealed.hidden  = false;
+            }, 300);
+        });
+    }
+
     /* ── Form submit ─────────────────────────── */
     const form    = document.getElementById('connect-form');
     const formBox = document.getElementById('the-form');
