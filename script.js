@@ -1,137 +1,115 @@
-/* ═══════════════════════════════════════════
-   script.js — Animations, parallax, form
-   ═══════════════════════════════════════════ */
-
 (function () {
     'use strict';
 
-    /* ── Scroll-based reveal ─────────────────── */
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    revealElements.forEach((el) => revealObserver.observe(el));
-
-    /* ── Smooth-scroll for CTA ───────────────── */
-    const tourBtn = document.getElementById('btn-tour');
-    if (tourBtn) {
-        tourBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector(tourBtn.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    /* ── Scroll reveal ─────────────────────── */
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                obs.unobserve(e.target);
             }
         });
-    }
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach((el) => obs.observe(el));
 
-    /* ── Parallax on scroll ──────────────────── */
-    const parallaxEls = document.querySelectorAll('[data-parallax]');
-
-    function handleParallax() {
-        const scrollY = window.scrollY;
-        parallaxEls.forEach((el) => {
-            const speed = parseFloat(el.dataset.parallax) || 0.05;
-            const rect = el.getBoundingClientRect();
-            const offset = (rect.top + scrollY - window.innerHeight / 2) * speed;
-            el.style.transform = `translateY(${-offset}px)`;
-        });
-    }
-
-    /* ── Floating doodles gentle mouse parallax ─ */
-    const doodles = document.querySelectorAll('.doodle');
-
-    function handleMouseMove(e) {
-        const cx = (e.clientX / window.innerWidth - 0.5) * 2;   // -1 … 1
-        const cy = (e.clientY / window.innerHeight - 0.5) * 2;
-
-        doodles.forEach((d, i) => {
-            const depth = 8 + (i % 4) * 6;
-            const dx = cx * depth;
-            const dy = cy * depth;
-            d.style.setProperty('--mx', `${dx}px`);
-            d.style.setProperty('--my', `${dy}px`);
-            // Combine with existing animation using translate overlay
-            d.style.marginLeft = `${dx}px`;
-            d.style.marginTop  = `${dy}px`;
-        });
-    }
-
-    /* Only enable mouse-parallax on non-touch devices */
-    if (!('ontouchstart' in window)) {
-        window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    }
-
-    /* ── Throttled scroll handler ────────────── */
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                handleParallax();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-
-    /* ── Contact form ────────────────────────── */
-    const form    = document.getElementById('connect-form');
-    const success = document.getElementById('success-msg');
-
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name    = document.getElementById('visitor-name').value.trim();
-            const contact = document.getElementById('visitor-contact').value.trim();
-            const message = document.getElementById('visitor-message').value.trim();
-
-            if (!name || !contact) return;
-
-            /* Save to localStorage as a simple persistence layer */
-            const entry = {
-                name,
-                contact,
-                message,
-                timestamp: new Date().toISOString()
-            };
-
-            const saved = JSON.parse(localStorage.getItem('site_messages') || '[]');
-            saved.push(entry);
-            localStorage.setItem('site_messages', JSON.stringify(saved));
-
-            /* Show success state */
-            form.hidden    = true;
-            success.hidden = false;
-
-            /* Log for demo purposes */
-            console.log('📬 New message saved:', entry);
-        });
-    }
-
-    /* ── Stagger reveal for grid children ────── */
-    const grids = document.querySelectorAll('.polaroid-grid, .cards-grid');
-    grids.forEach((grid) => {
-        const items = grid.querySelectorAll('.reveal');
-        items.forEach((item, i) => {
-            item.style.transitionDelay = `${i * 120}ms`;
+    /* stagger children inside grids */
+    document.querySelectorAll('.polaroids').forEach((g) => {
+        g.querySelectorAll('.reveal').forEach((item, i) => {
+            item.style.transitionDelay = `${i * 110}ms`;
         });
     });
 
-    /* ── Add subtle rotation jitter to polaroids on load */
-    const polaroids = document.querySelectorAll('.polaroid');
-    polaroids.forEach((p) => {
-        const randomRotate = (Math.random() - 0.5) * 5; // -2.5 … 2.5 deg
-        p.style.setProperty('--rot', `${randomRotate}deg`);
+    /* ── "Next" buttons — smooth scroll ────── */
+    document.querySelectorAll('.btn-next').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.dataset.goto);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    /* ── The runaway "No" button ─────────────── */
+    const noBtn   = document.getElementById('btn-no');
+    const hintEl  = document.getElementById('no-hint');
+    let escapeCount = 0;
+
+    const hints = [
+        "Nice try 😏",
+        "Nope, not happening.",
+        "You really thought?",
+        "Still no.",
+        "I can do this all day.",
+        "Okay now you're just playing.",
+        "Just click Yes already 😄",
+        "I admire the persistence.",
+        "…you sure?",
+        "Fine, I respect the effort."
+    ];
+
+    function escapeNo() {
+        const pad = 20;
+        const bw = noBtn.offsetWidth;
+        const bh = noBtn.offsetHeight;
+        const maxX = window.innerWidth  - bw - pad;
+        const maxY = window.innerHeight - bh - pad;
+
+        const nx = Math.max(pad, Math.random() * maxX);
+        const ny = Math.max(pad, Math.random() * maxY);
+
+        if (!noBtn.classList.contains('escaped')) {
+            noBtn.classList.add('escaped');
+        }
+        noBtn.style.left = nx + 'px';
+        noBtn.style.top  = ny + 'px';
+
+        if (hintEl) {
+            hintEl.textContent = hints[escapeCount % hints.length];
+        }
+        escapeCount++;
+    }
+
+    /* Desktop: hover */
+    noBtn.addEventListener('mouseenter', escapeNo);
+    /* Mobile: touch */
+    noBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        escapeNo();
+    }, { passive: false });
+
+    /* ── "Yes" button — show form ────────────── */
+    const yesBtn  = document.getElementById('btn-yes');
+    const askBox  = document.getElementById('the-ask');
+    const formBox = document.getElementById('the-form');
+
+    yesBtn.addEventListener('click', () => {
+        askBox.hidden  = true;
+        formBox.hidden = false;
+        // also remove escaped No button
+        noBtn.style.display = 'none';
+    });
+
+    /* ── Form submit ─────────────────────────── */
+    const form = document.getElementById('connect-form');
+    const done = document.getElementById('the-done');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+            name:    document.getElementById('visitor-name').value.trim(),
+            contact: document.getElementById('visitor-contact').value.trim(),
+            message: document.getElementById('visitor-message').value.trim(),
+            time:    new Date().toISOString()
+        };
+        if (!data.name || !data.contact) return;
+
+        const saved = JSON.parse(localStorage.getItem('curiousyet_messages') || '[]');
+        saved.push(data);
+        localStorage.setItem('curiousyet_messages', JSON.stringify(saved));
+
+        formBox.hidden = true;
+        done.hidden    = false;
+
+        console.log('📬 Message saved:', data);
     });
 
 })();

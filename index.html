@@ -4,172 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>curiousyet?</title>
-    <meta name="description" content="curiousyet — a playful, creative introduction. Sometimes a great story starts with curiosity and an unnecessarily elaborate website.">
+    <meta name="description" content="curiousyet — sometimes a great story starts with curiosity and an unnecessarily elaborate website.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ═══════════════ FLOATING DOODLE ELEMENTS ═══════════════ -->
+
+    <!-- ── Floating doodles (subtle, few) ── -->
     <div class="floating-doodles" aria-hidden="true">
-        <div class="doodle doodle-cloud" style="top:8%;left:5%">
-            <svg viewBox="0 0 120 60" fill="none"><path d="M30 50c-11 0-20-7-20-16s7-14 16-15c2-9 12-16 24-16s22 8 24 18c8 1 14 7 14 14s-7 14-16 14z" fill="rgba(173,216,250,0.45)"/></svg>
+        <div class="doodle d1">
+            <svg viewBox="0 0 120 60" fill="none"><path d="M30 50c-11 0-20-7-20-16s7-14 16-15c2-9 12-16 24-16s22 8 24 18c8 1 14 7 14 14s-7 14-16 14z" fill="rgba(173,216,250,0.3)"/></svg>
         </div>
-        <div class="doodle doodle-star" style="top:15%;right:10%">
-            <svg viewBox="0 0 50 50"><polygon points="25,2 31,18 49,18 35,29 39,46 25,36 11,46 15,29 1,18 19,18" fill="rgba(255,223,140,0.55)"/></svg>
+        <div class="doodle d2">
+            <svg viewBox="0 0 50 50"><polygon points="25,2 31,18 49,18 35,29 39,46 25,36 11,46 15,29 1,18 19,18" fill="rgba(255,223,140,0.35)"/></svg>
         </div>
-        <div class="doodle doodle-plane" style="top:30%;left:8%">
-            <svg viewBox="0 0 80 80" fill="none"><path d="M10 45L65 15l-20 30 20 5-55 10 15-20z" stroke="rgba(180,160,220,0.6)" stroke-width="2" fill="rgba(210,195,240,0.3)"/></svg>
+        <div class="doodle d3">
+            <svg viewBox="0 0 100 50" fill="none"><path d="M25 42c-9 0-17-6-17-13s6-12 14-13c2-7 10-13 20-13s19 7 20 15c7 1 12 6 12 12s-6 12-14 12z" fill="rgba(190,230,200,0.25)"/></svg>
         </div>
-        <div class="doodle doodle-sparkle" style="top:60%;right:6%">
-            <svg viewBox="0 0 40 40"><path d="M20 0l3 15 15-3-15 5 3 15-5-15-15 3 15-3z" fill="rgba(255,200,170,0.5)"/></svg>
-        </div>
-        <div class="doodle doodle-cloud2" style="top:70%;left:3%">
-            <svg viewBox="0 0 100 50" fill="none"><path d="M25 42c-9 0-17-6-17-13s6-12 14-13c2-7 10-13 20-13s19 7 20 15c7 1 12 6 12 12s-6 12-14 12z" fill="rgba(190,230,200,0.4)"/></svg>
-        </div>
-        <div class="doodle doodle-star2" style="top:45%;left:85%">
-            <svg viewBox="0 0 40 40"><polygon points="20,1 25,14 39,14 28,23 31,37 20,29 9,37 12,23 1,14 15,14" fill="rgba(255,190,200,0.45)"/></svg>
-        </div>
-        <div class="doodle doodle-flower" style="top:85%;right:15%">
-            <svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="6" fill="rgba(255,220,140,0.7)"/><circle cx="25" cy="14" r="6" fill="rgba(255,190,200,0.5)"/><circle cx="34" cy="19" r="6" fill="rgba(200,180,240,0.5)"/><circle cx="34" cy="31" r="6" fill="rgba(180,230,200,0.5)"/><circle cx="25" cy="36" r="6" fill="rgba(255,200,170,0.5)"/><circle cx="16" cy="31" r="6" fill="rgba(173,216,250,0.5)"/><circle cx="16" cy="19" r="6" fill="rgba(255,223,140,0.5)"/></svg>
-        </div>
-        <div class="doodle doodle-plane2" style="top:20%;left:70%">
-            <svg viewBox="0 0 60 60" fill="none"><path d="M8 35L50 12l-15 23 15 4-42 8 12-15z" stroke="rgba(160,210,190,0.6)" stroke-width="1.5" fill="rgba(190,235,210,0.25)"/></svg>
+        <div class="doodle d4">
+            <svg viewBox="0 0 40 40"><polygon points="20,1 25,14 39,14 28,23 31,37 20,29 9,37 12,23 1,14 15,14" fill="rgba(255,190,200,0.3)"/></svg>
         </div>
     </div>
 
-    <!-- ═══════════════ HERO SECTION ═══════════════ -->
-    <section id="hero" class="section hero">
-        <div class="hero-content" data-parallax="0.15">
-            <p class="hero-kicker">Hello there ✨</p>
-            <h1 class="hero-headline">
-                Not every story begins with<br>a grand introduction.
+    <!-- ═══════════ PAGE 1 : HERO ═══════════ -->
+    <section id="hero" class="page hero">
+        <div class="hero-content">
+            <p class="kicker">Hello there ✨</p>
+            <h1>
+                Not every story begins with<br>
+                a grand introduction.
             </h1>
-            <p class="hero-sub">
-                Sometimes it begins with <span class="highlight">curiosity</span>,<br>
-                a little <span class="highlight">courage</span>,<br>
-                and an unnecessarily elaborate <span class="highlight">website</span>.
+            <p class="subtitle">
+                Sometimes it begins with <strong>curiosity</strong>,<br>
+                a little <strong>courage</strong>,<br>
+                and an unnecessarily elaborate <strong>website</strong>.
             </p>
-            <a href="#poem" class="btn-primary" id="btn-tour">Take the Tour →</a>
-        </div>
-        <div class="scroll-hint" aria-hidden="true">
-            <span></span>
+            <button class="btn-next" data-goto="poem">Take the Tour →</button>
         </div>
     </section>
 
-    <!-- ═══════════════ POEM SECTION ═══════════════ -->
-    <section id="poem" class="section poem-section">
-        <div class="container">
+    <!-- ═══════════ PAGE 2 : POEM ═══════════ -->
+    <section id="poem" class="page poem-page">
+        <div class="narrow">
             <div class="poem-card reveal">
-                <span class="poem-icon">🌙</span>
-                <blockquote class="poem-text">
+                <span class="poem-emoji">🌙</span>
+                <blockquote>
                     <p>"You look as beautiful as pristine,</p>
                     <p>like an absolute serene,</p>
                     <p>oceanside moonlight beam on my face."</p>
                 </blockquote>
-                <div class="poem-decoration"></div>
             </div>
+            <button class="btn-next reveal" data-goto="gallery">Keep going →</button>
         </div>
     </section>
 
-    <!-- ═══════════════ GALLERY / TOUR SECTION ═══════════════ -->
-    <section id="gallery" class="section gallery-section">
-        <div class="container">
-            <h2 class="section-title reveal">A Little Tour</h2>
-            <p class="section-subtitle reveal">Moments captured in pastel & paper.</p>
+    <!-- ═══════════ PAGE 3 : GALLERY ═══════════ -->
+    <section id="gallery" class="page gallery-page">
+        <div class="wide">
+            <h2 class="section-heading reveal">A Little Tour</h2>
+            <p class="section-sub reveal">Some things that felt right.</p>
 
-            <div class="polaroid-grid">
-                <div class="polaroid reveal" data-parallax="0.05">
-                    <div class="polaroid-img-wrap">
-                        <img src="images/clouds_airplane.png" alt="Pastel clouds and paper airplane doodle" loading="lazy">
+            <div class="polaroids">
+                <figure class="polaroid reveal" style="--tilt:-3deg">
+                    <div class="tape tape-pink"></div>
+                    <div class="photo">
+                        <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=500&h=400&fit=crop&q=80" alt="Dreamy pastel sky with clouds" loading="lazy">
                     </div>
-                    <p class="polaroid-caption">Somewhere above the clouds ☁️</p>
-                </div>
-                <div class="polaroid reveal" data-parallax="0.08">
-                    <div class="polaroid-img-wrap">
-                        <img src="images/sunflowers.png" alt="Cheerful sunflower doodle" loading="lazy">
+                    <figcaption>somewhere above the noise</figcaption>
+                </figure>
+
+                <figure class="polaroid reveal" style="--tilt:2.5deg">
+                    <div class="tape tape-yellow"></div>
+                    <div class="photo">
+                        <img src="https://images.unsplash.com/photo-1559563362-c667ba5f5480?w=500&h=400&fit=crop&q=80" alt="Sunflower field" loading="lazy">
                     </div>
-                    <p class="polaroid-caption">Always facing the sun 🌻</p>
-                </div>
-                <div class="polaroid reveal" data-parallax="0.06">
-                    <div class="polaroid-img-wrap">
-                        <img src="images/stars_sparkles.png" alt="Twinkling stars and sparkles" loading="lazy">
+                    <figcaption>always facing the bright side</figcaption>
+                </figure>
+
+                <figure class="polaroid reveal" style="--tilt:-1.5deg">
+                    <div class="tape tape-blue"></div>
+                    <div class="photo">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&h=400&fit=crop&q=80" alt="Mountains under a starry night sky" loading="lazy">
                     </div>
-                    <p class="polaroid-caption">Little sparks of wonder ✨</p>
-                </div>
-                <div class="polaroid reveal" data-parallax="0.07">
-                    <div class="polaroid-img-wrap">
-                        <img src="images/potted_plant.png" alt="Cute potted plant illustration" loading="lazy">
+                    <figcaption>the kind of quiet that says something</figcaption>
+                </figure>
+
+                <figure class="polaroid reveal" style="--tilt:3deg">
+                    <div class="tape tape-green"></div>
+                    <div class="photo">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=400&fit=crop&q=80" alt="Peaceful ocean shoreline" loading="lazy">
                     </div>
-                    <p class="polaroid-caption">Growing at its own pace 🌱</p>
-                </div>
+                    <figcaption>where the thinking happens</figcaption>
+                </figure>
             </div>
+
+            <button class="btn-next reveal" data-goto="question">One more thing →</button>
         </div>
     </section>
 
-    <!-- ═══════════════ FUN FACTS CARDS ═══════════════ -->
-    <section id="facts" class="section facts-section">
-        <div class="container">
-            <h2 class="section-title reveal">Why This Website Exists</h2>
-            <p class="section-subtitle reveal">A few honest answers to a reasonable question.</p>
+    <!-- ═══════════ PAGE 4 : THE QUESTION ═══════════ -->
+    <section id="question" class="page question-page">
+        <div class="narrow">
 
-            <div class="cards-grid">
-                <div class="fact-card reveal">
-                    <span class="card-icon">🧭</span>
-                    <h3>Curiosity</h3>
-                    <p>Because some introductions deserve more than a "hey" on an app.</p>
+            <!-- Phase 1: The Ask -->
+            <div id="the-ask" class="ask-box reveal">
+                <h2>So… curious yet?</h2>
+                <p>We started with a website.<br>Maybe the next step is a conversation.</p>
+                <div class="ask-buttons">
+                    <button id="btn-yes" class="btn-yes">Yes</button>
+                    <button id="btn-no" class="btn-no">No</button>
                 </div>
-                <div class="fact-card reveal">
-                    <span class="card-icon">🎨</span>
-                    <h3>Creativity</h3>
-                    <p>Building things is fun. Building things for people is better.</p>
-                </div>
-                <div class="fact-card reveal">
-                    <span class="card-icon">🚀</span>
-                    <h3>A Little Courage</h3>
-                    <p>It takes some nerve to say "here, I made you a whole website." But here we are.</p>
-                </div>
+                <p class="hint-text" id="no-hint"></p>
             </div>
-        </div>
-    </section>
 
-    <!-- ═══════════════ CONTACT / MESSAGE SECTION ═══════════════ -->
-    <section id="connect" class="section connect-section">
-        <div class="container">
-            <div class="connect-card reveal">
-                <h2 class="connect-title">We started with a website.</h2>
-                <p class="connect-sub">Maybe the next step is a conversation.</p>
-                <p class="connect-desc">If you'd like to continue this experiment, leave a message or your preferred way to connect.</p>
+            <!-- Phase 2: The Form (hidden until Yes) -->
+            <div id="the-form" class="form-box" hidden>
+                <h2>Glad you said yes.</h2>
+                <p class="form-desc">Leave a message or your preferred way to connect.</p>
 
-                <form id="connect-form" class="connect-form" autocomplete="off">
-                    <div class="form-group">
+                <form id="connect-form" autocomplete="off">
+                    <div class="field">
                         <label for="visitor-name">What should I call you?</label>
                         <input type="text" id="visitor-name" name="name" placeholder="Your name" required>
                     </div>
-                    <div class="form-group">
+                    <div class="field">
                         <label for="visitor-contact">How can I reach you?</label>
-                        <input type="text" id="visitor-contact" name="contact" placeholder="Phone, email, Instagram — anything works" required>
+                        <input type="text" id="visitor-contact" name="contact" placeholder="Phone, email, Instagram — anything" required>
                     </div>
-                    <div class="form-group">
+                    <div class="field">
                         <label for="visitor-message">Anything you'd like to say?</label>
-                        <textarea id="visitor-message" name="message" rows="4" placeholder="A word, a sentence, a whole paragraph — no pressure."></textarea>
+                        <textarea id="visitor-message" name="message" rows="3" placeholder="A word, a sentence, no pressure."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary btn-send" id="btn-send">Send it over ✨</button>
+                    <button type="submit" class="btn-send">Send it over ✨</button>
                 </form>
-
-                <div id="success-msg" class="success-message" hidden>
-                    <span class="success-icon">🎉</span>
-                    <h3>Message received!</h3>
-                    <p>Thanks for being part of this little experiment. Talk soon, hopefully.</p>
-                </div>
             </div>
+
+            <!-- Phase 3: Success -->
+            <div id="the-done" class="done-box" hidden>
+                <span class="done-emoji">🎉</span>
+                <h2>Message received!</h2>
+                <p>Thanks for being part of this little experiment.<br>Talk soon, hopefully.</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- ═══════════════ FOOTER ═══════════════ -->
-    <footer class="site-footer">
-        <p>Made with curiosity & a little too much free time ✦</p>
+    <!-- ── Footer ── -->
+    <footer>
+        <p>made with curiosity & a little too much free time ✦</p>
     </footer>
 
     <script src="script.js"></script>
