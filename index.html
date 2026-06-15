@@ -12,20 +12,15 @@
 </head>
 <body>
 
-    <!-- ── Floating doodles (subtle, few) ── -->
-    <div class="floating-doodles" aria-hidden="true">
-        <div class="doodle d1">
-            <svg viewBox="0 0 120 60" fill="none"><path d="M30 50c-11 0-20-7-20-16s7-14 16-15c2-9 12-16 24-16s22 8 24 18c8 1 14 7 14 14s-7 14-16 14z" fill="rgba(173,216,250,0.3)"/></svg>
-        </div>
-        <div class="doodle d2">
-            <svg viewBox="0 0 50 50"><polygon points="25,2 31,18 49,18 35,29 39,46 25,36 11,46 15,29 1,18 19,18" fill="rgba(255,223,140,0.35)"/></svg>
-        </div>
-        <div class="doodle d3">
-            <svg viewBox="0 0 100 50" fill="none"><path d="M25 42c-9 0-17-6-17-13s6-12 14-13c2-7 10-13 20-13s19 7 20 15c7 1 12 6 12 12s-6 12-14 12z" fill="rgba(190,230,200,0.25)"/></svg>
-        </div>
-        <div class="doodle d4">
-            <svg viewBox="0 0 40 40"><polygon points="20,1 25,14 39,14 28,23 31,37 20,29 9,37 12,23 1,14 15,14" fill="rgba(255,190,200,0.3)"/></svg>
-        </div>
+    <!-- ── Floating bubbles ── -->
+    <div class="bubbles" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+        <span class="orb orb-4"></span>
+        <span class="orb orb-5"></span>
+        <span class="orb orb-6"></span>
+        <span class="orb orb-7"></span>
     </div>
 
     <!-- ═══════════ PAGE 1 : HERO ═══════════ -->
@@ -41,12 +36,12 @@
                 a little <strong>courage</strong>,<br>
                 and an unnecessarily elaborate <strong>website</strong>.
             </p>
-            <button class="btn-next" data-goto="poem">Take the Tour →</button>
+            <button class="btn-glass" data-goto="poem">Take the Tour →</button>
         </div>
 
         <!-- Hint bubble -->
         <div class="hint-bubble" id="hint-bubble" role="button" tabindex="0" aria-label="Click to reveal a hint">
-            <span class="bubble-icon">?</span>
+            <span class="bubble-q">?</span>
         </div>
         <div class="hint-revealed" id="hint-revealed" hidden>From Rahul</div>
     </section>
@@ -54,70 +49,38 @@
     <!-- ═══════════ PAGE 2 : POEM ═══════════ -->
     <section id="poem" class="page poem-page">
         <div class="narrow">
-            <div class="poem-card reveal">
-                <span class="poem-emoji">🌙</span>
-                <blockquote>
+            <div class="glass-card reveal">
+                <span class="card-emoji">🌙</span>
+                <blockquote class="poem-text">
                     <p>"You look as beautiful as pristine,</p>
                     <p>like an absolute serene,</p>
                     <p>oceanside moonlight beam on my face."</p>
                 </blockquote>
             </div>
-            <button class="btn-next reveal" data-goto="gallery">Keep going →</button>
+            <button class="btn-glass reveal" data-goto="dejavu">Keep going →</button>
         </div>
     </section>
 
-    <!-- ═══════════ PAGE 3 : GALLERY ═══════════ -->
-    <section id="gallery" class="page gallery-page">
-        <div class="wide">
-            <h2 class="section-heading reveal">A Little Tour</h2>
-            <p class="section-sub reveal">Some things that felt right.</p>
-
-            <div class="polaroids">
-                <figure class="polaroid reveal" style="--tilt:-3deg">
-                    <div class="tape tape-pink"></div>
-                    <div class="photo">
-                        <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=500&h=400&fit=crop&q=80" alt="Dreamy pastel sky with clouds" loading="lazy">
-                    </div>
-                    <figcaption>somewhere above the noise</figcaption>
-                </figure>
-
-                <figure class="polaroid reveal" style="--tilt:2.5deg">
-                    <div class="tape tape-yellow"></div>
-                    <div class="photo">
-                        <img src="https://images.unsplash.com/photo-1559563362-c667ba5f5480?w=500&h=400&fit=crop&q=80" alt="Sunflower field" loading="lazy">
-                    </div>
-                    <figcaption>always facing the bright side</figcaption>
-                </figure>
-
-                <figure class="polaroid reveal" style="--tilt:-1.5deg">
-                    <div class="tape tape-blue"></div>
-                    <div class="photo">
-                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&h=400&fit=crop&q=80" alt="Mountains under a starry night sky" loading="lazy">
-                    </div>
-                    <figcaption>the kind of quiet that says something</figcaption>
-                </figure>
-
-                <figure class="polaroid reveal" style="--tilt:3deg">
-                    <div class="tape tape-green"></div>
-                    <div class="photo">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=400&fit=crop&q=80" alt="Peaceful ocean shoreline" loading="lazy">
-                    </div>
-                    <figcaption>where the thinking happens</figcaption>
-                </figure>
-            </div>
-
-            <button class="btn-next reveal" data-goto="question">One more thing →</button>
-        </div>
-    </section>
-
-    <!-- ═══════════ PAGE 4 : THE QUESTION ═══════════ -->
-    <section id="question" class="page question-page">
+    <!-- ═══════════ PAGE 3 : DÉJÀ VU ═══════════ -->
+    <section id="dejavu" class="page dejavu-page">
         <div class="narrow">
+            <div class="glass-card dejavu-card reveal">
+                <span class="card-emoji">✦</span>
+                <h2 class="dejavu-title">Déjà vu.</h2>
+                <p class="dejavu-line">The first time I saw her, felt like déjà vu.</p>
+                <p class="dejavu-line">It was like my soul has always been known to her,</p>
+                <p class="dejavu-line last">mesmerising me.</p>
+            </div>
+            <button class="btn-glass reveal" data-goto="connect">One more thing →</button>
+        </div>
+    </section>
 
-            <!-- The Form (visible directly) -->
-            <div id="the-form" class="form-box reveal">
+    <!-- ═══════════ PAGE 4 : CONNECT ═══════════ -->
+    <section id="connect" class="page connect-page">
+        <div class="narrow">
+            <div id="the-form" class="glass-card form-card reveal">
                 <h2>We started with a website.</h2>
-                <p class="form-desc">Maybe the next step is a conversation.</p>
+                <p class="form-sub">Maybe the next step is a conversation.</p>
 
                 <form id="connect-form" autocomplete="off">
                     <div class="field">
@@ -128,21 +91,18 @@
                         <label for="visitor-message">Anything you'd like to say?</label>
                         <textarea id="visitor-message" name="message" rows="3" placeholder="A word, a sentence, no pressure."></textarea>
                     </div>
-                    <button type="submit" class="btn-send">Send it over ✨</button>
+                    <button type="submit" class="btn-glass btn-send">Send it over ✨</button>
                 </form>
             </div>
 
-            <!-- Success -->
-            <div id="the-done" class="done-box" hidden>
-                <span class="done-emoji">🎉</span>
+            <div id="the-done" class="glass-card done-card" hidden>
+                <span class="card-emoji">🎉</span>
                 <h2>Message received!</h2>
                 <p>Thanks for being part of this little experiment.<br>Talk soon, hopefully.</p>
             </div>
-
         </div>
     </section>
 
-    <!-- ── Footer ── -->
     <footer>
         <p>made with curiosity & a little too much free time ✦</p>
     </footer>

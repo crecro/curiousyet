@@ -13,15 +13,8 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
     reveals.forEach((el) => obs.observe(el));
 
-    /* stagger children inside grids */
-    document.querySelectorAll('.polaroids').forEach((g) => {
-        g.querySelectorAll('.reveal').forEach((item, i) => {
-            item.style.transitionDelay = `${i * 110}ms`;
-        });
-    });
-
     /* ── "Next" buttons — smooth scroll ────── */
-    document.querySelectorAll('.btn-next').forEach((btn) => {
+    document.querySelectorAll('.btn-glass[data-goto]').forEach((btn) => {
         btn.addEventListener('click', () => {
             const target = document.getElementById(btn.dataset.goto);
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -36,10 +29,24 @@
         bubble.addEventListener('click', () => {
             bubble.classList.add('popping');
             setTimeout(() => {
-                bubble.hidden    = true;
-                revealed.hidden  = false;
+                bubble.hidden   = true;
+                revealed.hidden = false;
             }, 300);
         });
+    }
+
+    /* ── Déjà vu lines — staggered reveal ──── */
+    const dejavuCard = document.querySelector('.dejavu-card');
+    if (dejavuCard) {
+        const dvObs = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    dvObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        dvObs.observe(dejavuCard);
     }
 
     /* ── Form submit ─────────────────────────── */
