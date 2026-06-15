@@ -35,24 +35,35 @@
         });
     }
     /* ──── Firebase Setup ── */
-    const firebaseConfig = {
-        apiKey: "AIzaSyC3H6OGf_5pZ_6qK2b9xL7mN-4pQ9-R8Yk",
-        authDomain: "curiousyet-7c771.firebaseapp.com",
-        projectId: "curiousyet-7c771",
-        databaseURL: "https://curiousyet-7c771-default-rtdb.firebaseio.com",
-        storageBucket: "curiousyet-7c771.appspot.com",
-        messagingSenderId: "1079651216",
-        appId: "1:1079651216:web:curiousyet-app"
-    };
+    let db = null;
+    let messagesRef = null;
 
-    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
+    try {
+        if (typeof firebase !== 'undefined' && firebase.apps && !firebase.apps.length) {
+            const firebaseConfig = {
+                apiKey: "AIzaSyC3H6OGf_5pZ_6qK2b9xL7mN-4pQ9-R8Yk",
+                authDomain: "curiousyet-7c771.firebaseapp.com",
+                projectId: "curiousyet-7c771",
+                databaseURL: "https://curiousyet-7c771-default-rtdb.firebaseio.com",
+                storageBucket: "curiousyet-7c771.appspot.com",
+                messagingSenderId: "1079651216",
+                appId: "1:1079651216:web:curiousyet-app"
+            };
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.database();
+            messagesRef = db.ref('messages');
+            console.log('✓ Firebase connected');
+        } else {
+            console.log('Firebase SDK not available - using localStorage');
+        }
+    } catch (e) {
+        console.log('Firebase initialization error:', e.message, '- using localStorage');
     }
-    const db = firebase?.database ? firebase.database() : null;
-    const messagesRef = db ? db.ref('messages') : null;
-    /* ── Soft shimmer button — bouquet particles ─ */
+
+    /* ──── Soft shimmer button — bouquet particles ── */
     const shimmerToggle = document.getElementById('shimmer-toggle');
     let bouquetTimer = null;
+
 
     if (shimmerToggle) {
         shimmerToggle.addEventListener('click', () => {
